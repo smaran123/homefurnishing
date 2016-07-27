@@ -1,0 +1,118 @@
+<div id="da-sidebar">
+
+  <!-- Main Navigation -->
+  <div id="da-main-nav" class="da-button-container">
+    <ul>
+      <li>
+        <%= link_to admin_dashboards_path do %>
+          <!-- Icon Container -->
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/home.png" alt="Dashboard" />
+          </span>
+          Dashboard
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to admin_categories_path do %>
+          <!-- Icon Container -->
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/day_calendar.png" alt="Calendar" />
+          </span>
+          Categories
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to admin_products_path do %>
+          <!-- Icon Container -->
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/file_cabinet.png" alt="File Handling" />
+          </span>
+          Products
+        <% end %>
+      </li>
+
+      <li>
+        <a href="#">
+          <!-- Nav Notification -->
+          <!-- Icon Container -->
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/graph.png" alt="Charts" />
+          </span>
+          Orders
+        </a>
+        <ul class="closed">
+          <li><%= link_to "Guest Orders", guest_orders_admin_orders_path %></li>
+          <li><%= link_to "User Orders", user_orders_admin_orders_path %></li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to admin_users_path do %>
+          <!-- Icon Container -->
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/settings.png" alt="" />
+          </span>
+          Users
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_stocks_path do %>
+          <!-- Icon Container -->
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/table_1.png" alt="Table" />
+          </span>
+          Inventory
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to admin_news_letters_path do %>
+
+          <!-- Icon Container -->
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/create_write.png" alt="Table" />
+          </span>
+          News Letter
+        <% end %>
+
+      <li>
+        <%= link_to admin_banners_path do %>
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/table_1.png" alt="Table" />
+          </span>
+          Banner
+
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to admin_advices_path do %>
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/table_1.png" alt="Table" />
+          </span>
+          Advices
+        <% end %>
+      </li>
+      
+      <li>
+        <%= link_to admin_guides_path do %>
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/table_1.png" alt="Table" />
+          </span>
+          Buying Guides
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to admin_offer_managers_path do %>
+          <span class="da-nav-icon">
+            <img src="/assets/admin/images/icons/black/32/table_1.png" alt="Table" />
+          </span>
+          Offer Manager
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+</div>

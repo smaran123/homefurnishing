@@ -1,0 +1,74 @@
+
+<% if current_user.present? %>
+<div class="panel panel-primary">
+  <div class="panel-heading">Order</div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+           <% if current_admin.present? %>
+           <th>Cart</th>
+           <% end %>
+           <!-- <th>Email</th> -->
+           <th>First name</th>
+           <th>Last name</th>
+           <th>Address</th>
+           <th>Landmark</th>
+           <th>Pincode</th>
+           <th>City</th>
+           <th>State</th>
+           <!-- <th>Country</th> -->
+           <th>Phone</th>
+           <!-- <th>Ip address</th> -->
+        <!--    <th>Card Number</th>
+           <th>Card Type</th>
+           <th>Card Exp Date</th>
+           <th>Card CVV</th> -->
+           <th>COD</th>
+           <th></th>
+           <th></th>
+           <% if current_user.present? %>
+           <th></th>
+           <%end%>
+
+         </tr>
+       </thead>
+
+       <% @orders.each do |order| %>
+       <tbody>
+        <tr>
+          <% if current_admin.present? %>
+          <td><%= order.cart_id %></td>
+          <% end %>
+
+          <td><%= order.first_name %></td>
+          <td><%= order.last_name %></td>
+          <td><%= order.address %></td>
+          <td><%= order.landmark %></td>
+          <td><%= order.pincode %></td>
+          <td><%= order.city %></td>
+          <td><%= order.state %></td>
+          <!-- <td><%= order.country %></td> -->
+          <td><%= order.phone %></td>
+          <!-- <td><%= order.ip_address %></td> -->
+        <!--   <td><%= order.card_num %></td>
+          <td><%= order.card_type %></td>
+          <td><%= order.card_expires_on %></td>
+          <td><%= order.card_cvv %></td> -->
+          <td><%= order.cod %></td> 
+          <td><%= link_to 'Show', order %></td>
+          <% if current_user.present? %> 
+          <td><%= link_to 'Edit', edit_order_path(order.id) %> <i class="fa fa-pencil-square-o fa-lg"></i></td>
+          <td><%= link_to 'Cancel Order', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td><%= link_to 'confirm', confirm_order_path(order) %></td>
+          <% end %>
+          
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>
+</div>
+<% end %>

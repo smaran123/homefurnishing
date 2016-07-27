@@ -1,0 +1,312 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require bxslider
+ *= require font-awesome
+ */
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 166px;
+  border: 2px solid red;
+  padding: 7px 15px 5px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+/*admin logo property*/
+div#da-header #da-header-top #da-logo-img img {
+  background-color: white;
+  max-height: 55px;
+  max-width: 230px;
+  padding: 0 10px 1px;
+}
+
+/*circular offer percentage*/
+.circleP {
+  background-color: #0eabdf;
+  border: 1px solid #e3e3e3;
+  border-radius: 40px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  height: 55px;
+  line-height: 50px;
+  margin: -10px 84px 0 auto;
+  text-align: center;
+  width: 55px;
+}
+
+.circleSmall {
+  background-color: #0eabdf;
+  border: 1px solid #e3e3e3;
+  border-radius: 22px;
+  color: #fff;
+  display: block;
+  font-size: 12px;
+  height: 39px;
+  line-height: 37px;
+  margin: -11px 129px 0 auto;
+  text-align: center;
+  width: 42px;
+}
+
+/*homes show collapsible category link property*/
+.catLink {margin-top: -10px; margin-bottom: 10px;}
+.catLink a{color: #545454;}
+.box-order {margin: 15px 5px 15px 17px;}
+.btn-cart-clear {margin-left: 600px !important;}
+
+.circleQ {
+  background-color: #000000;
+  border: 1px solid #e3e3e3;
+  border-radius: 40px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  height: 55px;
+  line-height: 50px;
+  margin: -10px 128px 0 auto;
+  text-align: center;
+  width: 55px;
+}
+
+.circleO {
+  background-color: #0eabdf;
+  border: 1px solid #e3e3e3;
+  border-radius: 40px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  height: 58px;
+  line-height: 50px;
+  margin: 0px 128px 0 auto;
+  text-align: center;
+  width: 58px;
+}
+.circlepop{
+
+  background-color: #adb;
+  border: 1px solid #e3e3e3;
+  border-radius: 40px;
+  color: #101212;
+  display: block;
+  font-size: 16px;
+  height: 55px;
+  line-height: 50px;
+  width: 55px;
+  display:inline-block;
+} 
+
+.responsive-pagination .text-float-left{
+    
+     margin-left: 1%;
+
+}
+.text-float-left{float: left;}
+.responsive-pagination .text-float-right{
+    
+     margin-top: -44px;
+}
+.text-float-right{ float: right;}
+.single-circle{
+    margin-left: 79px;
+    margin-top: -36px;
+      background-color: #232323;
+}
+.modal .modal-dialog {  
+     top: 60px;
+}
+.pop-up-float{
+ margin:0;
+ float: none;
+}
+.modal.in .modal-dialog2{ -webkit-transform:translate(0,0);-ms-transform:translate(0,0);transform:translate(0,0)}
+.modal .modal-dialog2{ top: 60px;}
+.modal-dialog2{ 
+    padding-bottom: 30px;
+    padding-top: 30px;
+     width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    position: relative;
+    z-index: 1050;
+  }
+  .modal-content2 {
+    padding: 10px 15px;
+    z-index: 1051;
+    height: 600px;
+}
+.modal-content2 {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+.modal-content2 {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 5   px solid rgba(204, 204, 204, 0.7);
+    border-radius: 2px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    outline: 0 none;
+    position: relative;
+}
+.modal .modal-dialog2 {  
+     top: 10px;
+}
+.pop-right{
+  border: 1px solid #f3f3f3;
+  box-shadow: 5px 5px  #ccc;
+}
+.popup-inner{
+  padding: 10px;
+}
+.click-text{
+    color: #238adb;
+    position: relative;
+    right: 89%;
+    top: 35px;
+  }
+    .col-md-11 {
+    width: 100%;
+}
+
+
+@media screen and (max-width: 320px){
+.text-float-left{ clear: both; float: none;}
+.responsive-pagination{ text-align: center;}
+.text-float-right{
+    clear: both; float: none;
+}
+.modal-dialog2{
+ width: 100%;
+}
+.product-img-box img{
+    height: 160px;
+}
+.modal-content2 {
+    height: 743px;
+    }
+    .click-text {
+    right: -3%;
+}
+}
+@media screen and (max-width: 480px){
+.modal-dialog2{
+ width: 100%;
+}
+.product-img-box img{
+    height: 160px;
+}
+.modal-content2 {
+    height: 743px;
+    }
+    .click-text {
+    right: -3%;
+}
+.modal-content2{
+  height: 800px;
+}
+
+}
+
+@media screen and (min-width: 400px) and (max-width:850px ){
+.circleQ {
+  margin-left: 40%;
+}
+.circleP{
+margin-left: 38%;
+}
+.circleO{
+  margin-left: 40%;
+}
+.modal-dialog2{
+  width: 100%;
+}
+
+}
+@media screen and (min-width: 600px) and (max-width:768px ){
+    
+   .click-text {
+   left: 180px;
+}
+.row{ text-align: center;}
+.modal-content2 {
+    height: 800px;
+    overflow: auto;
+    text-align: center;
+}
+.click-text{
+     right: 95%;
+     top: 58px;
+   }
+   .col-md-4{
+    width: 100%;
+   }
+   .col-md-8{
+    width: 100%;
+   }
+    .col-md-11 {
+    width: 100%;
+  }
+  .modal-body{
+    width: 100%;
+  }
+
+}
+@media screen and (min-width:900) and (max-width:1024px){
+
+.click-text{
+     right: 95%;
+     top: 58px;
+   }
+   .col-md-5{
+    width: 50%;
+   }
+    .col-md-11{ 
+    width: 50%;
+   }
+}
+
+@media screen and (min-width: 300px) and (max-width:1024px ){    
+   .scroll-images {
+  overflow: scroll;
+}
+}
+
+.scroll-images {
+  overflow-y: scroll;
+}
+
+#slider .bx-wrapper .bx-controls-direction a {display: block;}
+#slider .bx-wrapper { margin: 0px auto 60px; padding: 1px; position: relative; }
+#slider .bx-wrapper .bx-viewport {background: none repeat scroll 0 0 #fff; border: 0px solid #fff; box-shadow: 0 0 0px #ccc; left: 0px;}
+
+.guide-desc { margin-bottom: 15px; height: 100px; width: 520px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

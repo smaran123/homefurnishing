@@ -1,0 +1,73 @@
+<%= form_for @order do |f| %> 
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="box-new goledencolour">
+      <div class="box-contenT ">
+        <h4>Billing Address</h4>
+        <br/>
+        <%= render :partial => "delivery_form", locals: {:f => f} %>	
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="box-new">
+      <div class="box-contenT goledencolour1">
+        <h4>Shipping Address</h4>
+        <br/>
+        <%= render :partial => "shipping_form", locals: {:f => f} %> 
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="box-new goledencolour2">
+      <div class="box-contenT">
+        <p style="font-size: 22px;">
+          Delivery Method
+        </p>
+        <%= image_tag("cod1.jpg", height: "140px", width: "140px") %>
+        <br/>
+      </div>
+    </div>
+
+    <div class="box-new goledencolour3">
+      <div class="box-contenT">
+        <div class="actions">
+          <%= f.submit class: "btn btn create-order"%>
+          </div>
+          <br/>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <style>
+
+
+  .goledencolour{
+
+    border: 1px solid goldenrod;
+    
+  }
+
+.goledencolour1
+{
+      border: 1px solid goldenrod;
+    padding: 15px 18px 31px 21px;
+  }
+
+.goledencolour2
+{
+      border: 1px solid goldenrod;
+    padding: 15px 18px 31px 21px;
+  }
+
+.goledencolour3
+{
+      border: 1px solid goldenrod;
+    padding: 15px 18px 31px 21px;
+  }
+
+
+
+  </style>

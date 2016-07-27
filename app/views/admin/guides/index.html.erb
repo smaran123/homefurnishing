@@ -1,0 +1,13 @@
+<!-- Content Area -->
+<div id="da-content-area">
+  <div class="grid_4">
+    <%= link_to 'Add Buying GuideLine', new_admin_guide_path, :class => "pull-right btn btn-info" %>
+    <br/>
+    <% unless @guides.empty? %>
+      <%= render :partial => "index" %>
+      <%= will_paginate @categories %>
+    <% else %>
+      <h4>No buying guidelines found.</h4>
+    <% end %>
+  </div>
+</div>

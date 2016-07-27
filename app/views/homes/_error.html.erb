@@ -1,0 +1,9 @@
+<% if @news_letter.errors.any? %>
+  <div id="error_explanation" style="width: 270px;">
+    <ul>
+      <% @news_letter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %> 

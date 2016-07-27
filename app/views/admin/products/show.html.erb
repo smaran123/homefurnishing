@@ -1,0 +1,90 @@
+<!-- Photoswipe Plugin -->
+<script type="text/javascript" src="/assets/admin/plugins/photoswipe/lib/klass.min.js"></script>
+<script type="text/javascript" src="/assets/admin/plugins/photoswipe/js/code.photoswipe.jquery-3.0.4.min.js"></script>
+<link rel="stylesheet" href="/assets/admin/plugins/photoswipe/css/photoswipe.css" media="screen" />
+<!-- Demo JavaScript Files -->
+<script type="text/javascript" src="/assets/admin/js/demo/demo.gallery.js"></script>
+
+<div class="grid_4">
+  <%#*scrollable%>
+  <div class="da-panel collapsible">
+    <div class="da-panel-header">
+      <span class="da-panel-title">
+        <img src="/assets/admin/images/icons/black/16/list.png" alt="" />
+        Category Listing
+      </span>
+    </div>
+    <div class="da-panel-content">
+      <table id="da-ex-datatable-default" class="da-table">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Sub Category</th>
+            <th>Discount</th>
+            <th>Color / Style</th>
+            <th>Total Qty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @product.name.capitalize %></td>
+            <td><%= @product.description.html_safe %></td>
+            <td><%= number_to_currency(@product.price, :unit => "Rs.") %></td>
+            <td><%= @product.sub_category.category.name.capitalize %></td>
+            <td><%= @product.sub_category.name.capitalize %></td>
+            <td><%= @product.discount %></td>
+            <td><%= @product.color %></td>
+            <td><%= (@product.quantity.blank? || @product.quantity == 0) ? (0) : (@product.quantity) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>  
+</div>
+
+<div class="grid_4">
+  <div class="da-panel">
+    <div class="da-panel-header">
+      <span class="da-panel-title">
+        <img src="/assets/admin/images/icons/color/layout.png" alt="" />
+        <%= @product.name.titleize %> Image Gallery
+      </span>
+    </div>
+    <div class="da-panel-content with-padding">
+      <div class="da-gallery photoSwipe">
+        <ul>
+          <% @product.images.in_groups_of(3).each do |image| %>
+            <% image.each do |img| %>
+              <% if img.try(:avatar).present? %>
+                <li>
+                  <a href="<%= img.avatar.url(:small) %>" class="touchTouch">
+                    <img src="<%= img.avatar.url(:small) %>" alt="" width="300px" height="300px" />
+                  </a>
+                  <span class="da-gallery-hover" style="margin-bottom: 5px;">
+                    <ul>
+      <%#*<li class="da-gallery-update" title="Hide"><a href="#">Hide</a></li>%>
+
+      <%# if img.image_show == true%>
+      <%#= link_to 'hide',image_show_admin_product_path(:id => @product.id, :image_id =>img, :image_show =>"false"), :method => "PUT" %>
+      <%# else %>
+      <%#= link_to 'show',image_show_admin_product_path(:id => @product.id, :image_id =>img,:image_show =>"true"), :method => "PUT" %>
+      <%# end %>
+
+                      <li class="da-gallery-delete" title="Delete">
+                        <%= link_to "Delete", delete_img_admin_product_path(img.id, :product_id => @product.id), :method => :delete, :data => {:confirm => "Are you sure to delete"} %>
+                      </li>
+                    </ul>
+                  </span>
+                  
+                </li>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

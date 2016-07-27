@@ -1,0 +1,99 @@
+<% if @product.errors.any? %>
+  <div class="da-panel-content">
+    <div class="da-message warning">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div class="da-form-row">
+  <label>Choose Category</label>
+  <div class="da-form-item large">
+    <%= f.select :category_id, options_for_select([["Select Category", ""]] + Category.all.map {|c| [c.name, c.id]},:selected => f.object.category_id), {}, :id => "category_id" %>
+  </div>
+</div>
+
+<div class="load_subcats">
+  <% if @category.present? %>
+    <%= render :partial => "load_subcats" %>
+  <% end %>
+</div>
+
+<div class="da-form-row">
+  <label><%= f.label :product_Name %></label>
+  <div class="da-form-item large">
+    <%= f.text_field :name, class: "form-control", placeholder:"Product Name"%>
+    </div>
+  </div>
+
+
+  <div class="da-form-row">
+    <label><%= f.label :Description %></label>
+    <div class="da-form-item large">
+      <%= f.text_area :description,rows: 6, column: 5, class: "form-control ckeditor", placeholder: "Description", :id => "da-ex-elastic" %>
+      </div>
+    </div>
+
+    <div class="da-form-row">
+      <label><%= f.label :price %></label>
+      <div class="da-form-item large">
+        <%= f.text_field :price , class: "form-control", placeholder: "price" %>
+        </div>
+      </div>
+
+      <div class="da-form-row">
+        <label><%= f.label :Discount, "Discount (%)" %></label>
+        <div class="da-form-item large">
+          <%= f.text_field :discount, class: "form-control", placeholder: "Discount (Hint: 12.75)" %>
+          </div>
+        </div>
+
+        <div class="da-form-row">
+          <label><%= f.label :color, "Color" %></label>
+          <div class="da-form-item large">
+            <%= f.text_field :color, class: "form-control", placeholder: "Color" %>
+            </div>
+          </div>
+
+          <div class="da-form-row">
+            <label><%= f.label :product_size, "Size" %></label>
+            <div class="da-form-item large">
+              <%= f.text_field :product_size, class: "form-control", placeholder: "Size" %>
+              </div>
+            </div>
+
+            <div style="margin-left: 25px; margin-bottom: 15px;">
+              <% f.fields_for :images do |image| %>            
+                <div class="da-form-row">
+                  <%= image.file_field :avatar %>              
+                  <%= image.link_to_remove "Remove" %>
+                </div>            
+              <% end %>
+
+              <br/>
+              <%= f.link_to_add "Add More Images", :images, :class =>"btn btn-primary" %>
+            </div>
+
+            <div class="da-button-row">
+              <%= f.submit class: "da-button blue left" %>
+              </div>
+
+              <script>
+                $(document).on("change", "#category_id", function() {
+                  var category_id = $(this).val();
+                  $.ajax({
+                    url: "/admin/products/load_subcats",
+                    dataType: "Script",
+                    type: "GET",
+                    data: {
+                      category_id: category_id
+                    }
+                  });
+                });
+              </script>

@@ -1,0 +1,20 @@
+jQuery ->
+$('body').prepend('<div id="fb-root"> </div>')
+$.ajax
+url: "#{window.location.protocol}//connect.facebook.net/en-US/all.js"
+dataType: 'script'
+cache: true
+window.fbAsyncInit = ->
+FB.init(appId: '<%= ENV["FACEBOOK_APP_ID"]%>',cookie: true)
+$('#sign_in').click(e) -> 
+e.preventDefault()
+FB.login(response) ->
+Window.location = '/auth/facebook/callback' if response.authResponse
+, scope: "email,publish_stream"
+$('#sign_out').click(e) ->
+FB.getLoginStatus(response) ->
+fb.logout() if response.authResponse
+true
+if $('sign_out').length > 0
+FB.getLoginstatus (respone) ->
+window.location = $('#sign_out').attr("href") if !response.authResponse

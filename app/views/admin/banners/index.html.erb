@@ -1,0 +1,13 @@
+<!-- Content Area -->
+<div id="da-content-area">
+  <div class="grid_4">
+    <%= link_to 'Add Banner', new_admin_banner_path, :class => "pull-right btn btn" %>
+    <br/><br/>
+    <% unless @banner_images.empty? %>
+      <%= render :partial => "index" %>
+    <% else %>
+      <h4>No banners found.</h4>
+    <% end %>
+  </div>
+</div>
+<%= will_paginate @banner_images %>

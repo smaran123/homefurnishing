@@ -1,0 +1,133 @@
+<article>
+  <div class="box-mainchart">
+    <div class="container">
+      <div class="box-table clearfix">
+        <div class="table-box">
+          <div class="trow">
+            <div class="tcolumn">Image</div>
+            <div class="tcolumn">Product Name</div>
+            <div class="tcolumn">Quantity</div>
+            <div class="tcolumn">Unit Price</div>
+            <div class="tcolumn">Sub Total</div>
+            <div class="tcolumn">Action</div>
+          </div>
+          <% for line_item in @cart.line_items %>
+          <div class="trow" id="box-contactInfo-content">
+            <div class="tcolumn">
+            <%= image_tag(line_item.product.images.present? ? (line_item.product.images.first.avatar.url) : "/assets/missing.png", height: "50px", width: "80px") %>
+            </div>
+            <div class="tcolumn">
+              <h4><%= line_item.product.name %></h4>
+              <div class="frow frow-color">
+                <div>Color:</div>
+                <div><%= line_item.product.color %></div>
+              </div>
+            </div>
+
+            <div class="tcolumn">
+              <% quantities = [] %>
+                <% if(line_item.product.quantity > 0) %>
+                 <% (1..line_item.product.quantity).each do |qty| %>
+                  <% quantities << qty %>
+                 <% end %>
+               <% end %>
+
+            <%  @quantities = quantities %>
+              <%= select_tag :quantity, options_for_select(@quantities, :selected => line_item.quantity), :onchange => "quantity_select(this.value, #{current_cart.id}, #{line_item.id})", :class => "form-control" %>
+            </div>
+
+            <div class="tcolumn">Rs. <%= line_item.unit_price %></div>
+            <div class="tcolumn">Rs. <%= line_item.full_price %></div>
+            <div class="tcolumn">
+              <%= link_to "x", cart_path(line_item), :method => :delete, :id => "box-close-contactInfo" %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <%= render :partial => "mproduct_view" %>
+      <div class="box-frowdate hide-788">
+        <!-- will remove this later -->
+      </div>
+      <div class="box-continue clearfix">
+        <%= link_to "Continue Shopping", homes_path, :class => "btn btn-sm" %>
+        <%#= link_to "Empty Shopping Cart",empty_carts_carts_path, :method => :delete, :class => "btn btn-sm btn-cart-clear" %>
+      </div>
+      <div class="box-estimate">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="box-subtotal clearfix">
+              <div id = "proceed_btn" style="height: 50px;
+line-height: 18px;">
+                <div class="frow frow-sub">
+                  <div  >Grand total:</div>
+                  <div style="font-weight:bold;color:white;">Rs.<%= @cart.total_price %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+          </div>
+          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+            <p class="pull-right pull_right">
+              <%= link_to "Proceed to Checkout", current_user ? new_order_path : checkout_information_orders_path , class: "btn btn-proceed", :id => "proceed_btn", title: "Proceed to Checkout" %>
+            </p>
+                      <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
+        
+
+<form id="redirect" method="post" name="redirect" action="http://www.ccavenue.com/shopzone/cc_details.jsp">
+        <input type="hidden" name="encRequest" value="<%= @encRequest %>">
+        <input type="hidden" name="Merchant_Id" value="<%=@CCAVENUE_MERCHANT_ID%>">
+    </form>
+    
+    <script>
+    </script>
+
+
+
+
+
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+<script type="text/javascript">
+  function quantity_select(quantity, cart, line_item) {
+    $.ajax({
+      url: "/carts/" + line_item,
+      dataType: "Script",
+      method: "PUT",
+      data: {
+        quantity: quantity,
+        cart: cart
+      }
+    });
+  }
+          document.getElementById("redirect").submit();   
+
+</script>
+<style type="text/css">
+  p.pull_right{
+  margin: 0px -11px 0px 0px;
+
+
+  }
+  #proceed_btn{
+    background-color: grey !important;
+    padding: 14px;
+    border-radius: 1px;
+    box-shadow: 0px 0px 1px 0px rgb(101, 102, 101);
+    border: 1px solid transparent;
+    cursor: pointer;
+
+
+  }
+
+
+</style>

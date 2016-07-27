@@ -1,0 +1,34 @@
+<article>	
+  <div class="box-maincheckout">
+    <div class="container">
+      <div class="box-checkout">
+        <div class="box-checkoutinform">
+        <% if current_user.present? %>
+          <h4 class="bposi-order"><span class="step">Step 1</span> <span class="text-informationSpacing">Billing & Shipping Address</span></h4>
+         
+          <% else %>
+          <h4 class="bposi-order"><span class="step">Step 2</span> <span class="text-informationSpacing">Billing & Shipping Address</span></h4>
+          <% end %>
+          <div class="box-mainnew">
+            <div class="row">
+              <%= render :partial => "form" %>
+            </div>
+          </div>
+        </div>	
+      </div>
+    </div>
+  </div>	
+</article>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('input[type="checkbox"]').click(function() {
+      if ($(this).is(":checked")) {
+        $("#shipping_address").hide();
+      }
+      else if ($(this).is(":not(:checked)")) {
+        $("#shipping_address").show();
+      }
+    });
+  });
+</script>

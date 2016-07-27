@@ -1,0 +1,35 @@
+<article>	
+  <div class="box-maincheckout">
+    <div class="container">
+      <div class="box-checkout">
+        <div class="box-checkoutinform">
+        <% if current_user.present? %>
+          <h4 class="bposi-order"><span class="step">Step 3</span> <span class="text-informationSpacing">Complete</span></h4>
+          <% else %>
+          <h4 class="bposi-order"><span class="step">Step 4</span> <span class="text-informationSpacing">Complete</span></h4>
+          <% end %>
+          <div class="box-mainnew">
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="box-new">
+                  <div class="box-contenT">
+                    <b> Order is successfully placed.</b>
+                    <br/><br/>  
+                    <b>Thanks for shopping.</b>
+
+                    <br/><br/>  
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <%= link_to "Continue Shopping", homes_path, :class => "btn" %>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>	
+        </div>
+      </div>
+    </div>	
+  </article>

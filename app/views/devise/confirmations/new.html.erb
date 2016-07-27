@@ -1,0 +1,27 @@
+<div id="da-login-box">
+  <div id="da-login-box-header">
+      <h1>Resend confirmation</h1>
+    </div>
+    <div id="da-login-box-content">
+              
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+	<div class="da-panel-content">
+    <div class="da-message warning">
+			<%= devise_error_messages! %>
+		</div>
+	</div>
+          <div id="da-login-input-wrapper">
+              <div class="da-login-input">
+                  <%= f.email_field :email, autofocus: true, id: "da-login-username", placeholder:"Email address"%>
+                </div>
+            </div>
+            <div id="da-login-button">
+              <%= f.submit "Resend confirmation", id: "da-login-submit" %>
+            </div>
+        <% end %>
+    </div>
+    <div id="da-login-box-footer">
+         <%= render "devise/shared/links" %>
+        <div id="da-login-tape"></div>
+    </div>
+</div>

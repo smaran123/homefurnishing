@@ -1,0 +1,49 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading">User Profile Management</div>
+   <div class="panel-body">
+    <table class="table">
+<!-- <p>
+   <strong>vistor id:</strong>   
+    <%= @user.id %>
+</p> -->
+
+  <p> 
+  <strong>First Name:</strong>    
+    <%= @user.first_name %>
+
+  </p>
+  <p>
+   <strong>Last Name:</strong>   
+    <%=@user.last_name%>
+    </p>
+
+<p>
+    <strong>Email:</strong>     
+    <%= @user.email %>
+</p>
+
+
+<p>
+    <strong>Age:</strong>   
+    <%=@user.age%>
+</p>
+
+  <p>
+    <strong>Gender:</strong>
+   <%=@user.gender%>
+   </p>
+
+  <p>
+<strong>Mobile Number:</strong>
+<%=@user.mobile_number%>
+</p>
+
+</div>
+
+  </div>
+</div>
+
+<%= link_to "Edit", edit_profile_path(@user), :class => "btn btn-sm" %>
+
+<br/>

@@ -1,0 +1,183 @@
+
+
+
+<article>
+  <div class="container">
+    <div class="box-product">
+      <div class="row">
+
+
+<% if @sub_category.id == 25 %>
+<h2> Made to Measure Bliends in 7 Days </h2>
+<div class="row textimage">
+<div class="col-md-6">
+<h4 class="measure-style">Made to Measure steps</h4>
+<p class="styling">
+<strong>Step 1:</strong>
+  Select Your Blind Type
+<br>
+<strong>Step 2:</strong>
+ Choose your Fabric
+<br>
+<strong>Step 3:</strong>
+  Enter your Measurements
+<br>
+<strong>Step 4:</strong>
+ Confirm your Order
+<br>
+</p>
+</div>
+<div class="col-md-6">
+</div>
+</div>
+
+
+
+
+
+<% elsif @sub_category.id == 16 %>
+<h2> Made to Measure Curtains in 7 Days </h2>
+
+<div class="row textimage">
+<div class="col-md-6">
+<h4>Made to Measure steps</h4>
+
+<p class="styling">
+<strong>Step 1:</strong>
+ Choose your Fabric
+<br>
+<strong>Step 2:</strong>
+ Select your Heading Type
+<br>
+<strong>Step 3:</strong>
+ Enter your Measurements
+<br>
+<strong>Step 4:</strong>
+ Choose Your Lining 
+<br>
+<strong>Step 5:</strong>
+ Confirm Your Order
+<br>
+
+</p>
+
+
+
+
+
+
+</div>
+<div class="col-md-6">
+
+</div>
+</div>
+<% else %>
+
+<% end %>
+
+
+
+
+
+
+        <%# if(params[:controller] == "homes" && params[:action] != "search") %>
+          <!-- <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 box-product-left"> -->
+           <%#= render :partial => "right_cat_menus" %>
+           <%#= render :partial => "right_featured_menus" %>
+          <!-- </div> -->
+        <%# end %>
+
+        <% if @products.present? %>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="leftColumn" class="product-outer-box">
+              <div class="row row-mrgn" >
+                <% @products.each do |product| %>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                    <div class="box-productimg">
+
+                      <%= link_to image_tag(product.images.present? ? (product.images.first.avatar.url(:small)) : "/assets/missing.png", height: "317px", width: "337px"), single_product_home_path(product)  %>
+
+                   
+                    </div>
+                    <div class="box-content" style="margin-bottom: 20px;">
+                      <h4><%= product.name.capitalize %></h4>
+ <h3>Rs. <%= product.price %></h3> 
+                      
+                     
+                    </div>
+                  </div>
+
+                  <%#= render :partial => "popup_product_slider", locals: {:product => product} %>
+
+                <% end %>
+              </div>
+              <div class="row">
+                <div class="box-pagination responsive-pagination">
+                  <span class="text-float-left">Total Items <%= @products.count%> </span>
+                  <span class="text-float-right"><%= will_paginate @products, renderer: BootstrapPagination::Rails %></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <% else %>
+          <h2>Comming Soon!!!!!</h2>
+        <% end %>
+      </div>
+    </div>
+    <nav>
+    </nav>
+  </div>
+</article>
+<style type="text/css">
+  .row .row-mrgn{margin-right: -29px;}
+
+.textimage
+{
+ background: rgba(0, 0, 0, 0) url(/assets/mtmc_bnr.jpg) no-repeat scroll 0 0;
+
+    border-top: 3px solid #dedbd2;
+    display: block;
+    height: 191px;
+    margin: 0 0 18px 13px;
+    padding: 24px 27px 0 54px;
+    text-decoration: none;
+    width: 726px;
+}
+
+h2 {
+    color: #727270;
+    font-size: 1.833em;
+    font-weight: normal;
+}
+.styling
+{
+   color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 0 12px;
+}
+
+.measure-style
+{
+ color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0 0 12px; 
+}
+
+.box-content {
+border: 1px solid goldenrod;
+}
+
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #DAA520 !important;
+    border-color: #DAA520 !important;
+    color: #fff;
+    cursor: default;
+    z-index: 2;
+}
+</style>

@@ -1,0 +1,189 @@
+<% if current_user %>
+Number of Friends: <%= current_user.friends_count %>
+<% end %>
+<% if @banner_images.present? %>
+
+    <div id="slider">
+    <div class="bxslider-banner">
+      <% for image in @banner_images %>
+        <div class="item active">
+          <img title="" src="<%= image.image.url(:original) %>"  height="580" style="width:100%"/>
+          <div class="container">
+            <div class="box-homecontent clearfix">
+              <div class="content-banner">
+                <h1><%= image.image_description.html_safe %></h1>
+              </div>
+              <div class="content-banner text-personalise"> <%= image.small_description.try(:html_safe)  %></div>
+              <p style><a class="btn btn-newarrivals" href="#" title="Stay Tuned">Stay Tuned</a></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>   
+<% end%>
+
+<article>
+<% if @offer_go.present? %>
+    <% if(@offer_go.go_text.present? && @offer_go.go_percent.present? && @offer_go.go_parent.present?) %>
+     <div class="box-whether">
+      <div class="container">
+        <div class="fright box-circel">
+          <div class="box-divider"></div>
+          <div class="circle"> <%= link_to "Go!", offers_homes_path(:param1 => @offer_go.go_parent, :param2 => @offer_go.go_percent) %> </div>
+        </div>
+        <p><%= @offer_go.go_text.html_safe %></p>
+      </div>
+    </div> 
+    <% end %>
+<% end %>
+  
+  <div class="container">
+     <%= render :partial => 'offer_collection' %>
+
+    <% if @featured.present? %>
+      <div class="box-simliar">
+        <h1><span>Featured Items</span></h1>
+        <div class="bxslider">
+          <% @featured.each do |product| %>
+            <div class="box-bedsheeT">
+              <div class="box-bedsheetimg">
+                <%= link_to image_tag(product.images.present? ? (product.images.first.avatar.url) : "/assets/missing.png", :style => "width:475px;height:250px"), single_product_home_path(product.id)%>
+              </div>
+              <div class="box-content">
+                <!-- <h3>Rs. <%#= product.price %></h3> -->
+                <h4><%= product.name.capitalize %></h4>
+                <%# if product.discount? %>
+                  <!-- <span class="circleO"> -->
+                    <%#= product.discount%>
+                  <!-- </span>            -->
+                <%# end %> 
+                
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+<!--
+    <%# if @advices.present? %>
+      <div class="box-featured">
+        <h1><span>Inspiration & Advices</span></h1>
+        <div class="bxslider">
+          <%# @advices.each do |advice| %>
+            <div class="box-bedsheeT">
+              <div class="box-bedsheetimg">
+                <%#= link_to image_tag(advice.avatar.present? ? (advice.avatar.url) : "/assets/missing.png", :style => "width:475px;height:250px"), inspirations_home_path(advice.id)%>
+              </div>
+              <div class="box-content">
+                <p><%#= advice.title.titleize.truncate(20) %></p>
+                <p><%#= link_to "View More", inspirations_home_path(advice.id), :class => "btn btn-sm btn-primary"%></p>
+              </div>
+            </div>
+          <%# end %>
+        </div>
+      </div>
+    <%# end %>
+-->
+
+<!--
+    <%# if @guides.present? %>
+      <div class="box-featured">
+        <h1><span>Buying Guides</span></h1>
+        <div class="bxslider-buying-guides">
+          <%# @guides.each do |guide| %>
+            <div class="box-bedlinen">
+              <div class="row">
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                  <div class="buying-leftColumn">
+                    <h6><%#= guide.title %></h6>
+                    <div class="guide-desc">
+                      <%#= guide.description.html_safe %>
+                    </div>
+                    <p>
+                      <%#= link_to "View More", guide_home_path(guide), :class => "btn btn-sm btn-primary" %>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 img-buying">
+                  <%#= image_tag guide.image.url(:thumb),:style => "width:700px;height:260px" %>
+                </div>
+              </div>
+            </div>
+          <%# end %>
+        </div>
+      </div> 
+    <%# end %>
+-->
+
+    <div class="box-featured box-features">
+      <h1><span>Amazing Features</span></h1>
+      <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img src="/assets/images/img-ven.png" title="" alt=""/>
+          <h5>Free Delivery Over Rs. 200</h5>
+          <p>"We offer free standard delivery on all our products over Rs. 200. Simply choose
+ standard delivery at the checkout and free delivery will be automatically applied.
+ From time to time we do run delivery promotions in our marketing emails – sign 
+up to our newsletter to keep up to date.  "
+</p>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img src="/assets/images/img-gift.png" title="" alt=""/>
+          <h5>Make Student Discount 10%</h5>
+          <p>"We think you deserve a first class treat for all your hard work.
+ So, for a limited time only, we’re giving you 10% off your 
+shopping. Redeeming is very simple – simply register and get your unique code, enter at checkout and hey presto, you’re ready to go. It’s free to join, so what are you waiting for? "
+</p>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> <img src="/assets/images/img-right.png" title="" alt=""/>
+          <h5>Returns Free</h5>
+          <p>"You know you're in safe hands with Rosara, our products have a
+14 day money back guarantee. If you change your mind, just return it unused, in its original condition with your receipt to our address within 14 days, we'll either exchange it or give you a full refund."
+</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $('.bxslider').bxSlider({
+      slideWidth: 308,
+      speed: 4000,
+      auto: true,
+      pager: false,
+      autoHover: true,
+      minSlides: 3,
+      maxSlides: 12,
+      moveSlides: 3,
+      slideMargin: 20,
+      responsive: true,
+      adaptiveHeight: true
+    });
+
+    $('.bxslider-banner').bxSlider({
+      auto: true,
+      speed: 4000,
+      pager: false,
+      autoHover: true,
+      minSlides: 1,
+      slideMargin: 0,
+      responsive: true,
+      adaptiveHeight: true
+    });
+
+    $('.bxslider-buying-guides').bxSlider({
+      auto: false,
+      infiniteLoop: true,
+      speed: 4000,
+      pager: false,
+      autoHover: true,
+      minSlides: 1,
+      maxSlides: 12,
+      slideMargin: 20,
+      responsive: true,
+      adaptiveHeight: true
+    });
+  });
+</script>
